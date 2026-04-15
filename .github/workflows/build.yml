@@ -32,16 +32,8 @@ jobs:
       - name: Install dependencies
         run: npm install
       
-      - name: Initialize EAS
-        run: npx eas-cli init --id YOUR_EAS_PROJECT_ID
-        env:
-          EXPO_TOKEN: ${{ secrets.EXPO_TOKEN }}
-      
-      - name: Build APK
-        run: npx eas-cli build --platform android --local --non-interactive
-        env:
-          EXPO_TOKEN: ${{ secrets.EXPO_TOKEN }}
-          JAVA_HOME: /usr/lib/jvm/temurin-17-jdk-amd64
+      - name: Build APK with Gradle
+        run: cd android && ./gradlew assembleDebug
       
       - name: Upload APK
         uses: actions/upload-artifact@v4
