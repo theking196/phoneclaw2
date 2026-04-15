@@ -35,6 +35,7 @@ jobs:
       - name: Build APK
         run: npx eas-cli build --platform android --local --non-interactive
         env:
+          EXPO_TOKEN: ${{ secrets.EXPO_TOKEN }}
           JAVA_HOME: /usr/lib/jvm/temurin-17-jdk-amd64
       
       - name: Upload APK
