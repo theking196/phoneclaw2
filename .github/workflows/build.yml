@@ -32,6 +32,11 @@ jobs:
       - name: Install dependencies
         run: npm install
       
+      - name: Initialize EAS
+        run: npx eas-cli init --id YOUR_EAS_PROJECT_ID
+        env:
+          EXPO_TOKEN: ${{ secrets.EXPO_TOKEN }}
+      
       - name: Build APK
         run: npx eas-cli build --platform android --local --non-interactive
         env:
